@@ -1,11 +1,13 @@
 import express, { Request, Response, NextFunction } from "express";
 import Rutas from "./routes/Rutas_prueba";
 import { conectar_Db } from "./db/bd";
+import path from "path";
 
 const app = express();
 const PORT = 12345;
 
 app.use(express.json());
+app.use('/uploads',express.static(path.join(__dirname, '../uploads')));
 
 
 //  Middleware para loguear TODAS las peticiones
