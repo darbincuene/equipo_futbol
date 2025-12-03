@@ -7,7 +7,7 @@ const app = express();
 const PORT = 12345;
 
 app.use(express.json());
-app.use('/uploads',express.static(path.join(__dirname, '../uploads')));
+app.use('/uploads',express.static(path.join(__dirname, '../public')));
 
 
 //  Middleware para loguear TODAS las peticiones
