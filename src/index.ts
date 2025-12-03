@@ -7,15 +7,10 @@ const app = express();
 const PORT = 12345;
 
 app.use(express.json());
-app.use('/uploads',express.static(path.join(__dirname, '../public')));
+
+app.use('/uploads', express.static(path.join(__dirname, 'public/uploads')));
 
 
-//  Middleware para loguear TODAS las peticiones
-// console.log("Servidor iniciado. Esperando peticiones...");
-// app.use((req: Request, res: Response, next: NextFunction) => {
-//   console.log(` Petición recibida: ${req.method} ${req.url}`);
-//   next();
-// });
 
 
 
