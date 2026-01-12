@@ -19,13 +19,13 @@ app.use("/", Rutas);
 const startServer = async () => {
   try {
     await conectar_Db();
-    // console.log("✅ Conectado a MongoDB con Mongoose");
+    // console.log(" Conectado a MongoDB con Mongoose");
 
     app.listen(PORT, () => {
       console.log(` Servidor corriendo en http://localhost:${PORT}`);
     });
   } catch (error) {
-    console.error("❌ Error al iniciar el servidor:", error);
+    console.error("Error al iniciar el servidor:", error);
   }
 };
 

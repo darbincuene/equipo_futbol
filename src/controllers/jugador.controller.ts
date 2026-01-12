@@ -1,7 +1,7 @@
 import  Express  from "express";
 import { Request, Response } from "express";
 import multer from '../middlewares/multer'
-import { CrearJugador,ObtenerJugadores, ObtenerJugadorPorId ,ObtenerJugadoresporEquipo} from "../services/jugador.service";
+import { actualizarJugador,CrearJugador,ObtenerJugadores, ObtenerJugadorPorId ,ObtenerJugadoresporEquipo} from "../services/jugador.service";
 import { read } from "fs";
 
 export const crearJugadorController = async (req: Request, res: Response) => {
@@ -58,6 +58,30 @@ export const obtener_JugadoresController = async(req:Request, res:Response)=>{
 
     }
 }
+export const actualizar_jugadorController = async(req:Request, res:Response)=>{
+  try{
+    const {id}=req.params;
+    const data=req.body;
+
+    const resultado= await actualizarJugador(id,data);
+    if (resultado.modifiedCount ===0){
+      return res.status(404).json({
+        message:"no se encontro el equipo o sin cambios"
+      })
+    }
+    res.json({
+      message:"equipo actuaizado con exito",
+      data:resultado
+    })
+
+  }
+  catch(error:any){
+    res.status(500).json({
+      message:error.message
+    });
+    
+  }
+}
 export const obtener_JugadoresPorIdController = async(req:Request, res:Response)=>{
     try{
          const {id}=req.params;
@@ -79,3 +103,5 @@ export const obtener_JugadoresPorIdController = async(req:Request, res:Response)
 
     }
 }
+
+

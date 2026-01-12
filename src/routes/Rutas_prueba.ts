@@ -1,7 +1,7 @@
 import { Router } from "express";
 import configmulter from "../middlewares/multer";
 import { Agregar_Jugador_Al_EquipoController,crearEquipoController, Traer_EquiposController, Eliminar_EquipoController , Actualizar_EquipoController} from "../controllers/Equipo.controller";
-import { obtener_JugadoresController, obtener_JugadoresPorIdController,crearJugadorController ,ObtenerJugadoresporEquipoController} from "../controllers/jugador.controller";
+import { obtener_JugadoresController, obtener_JugadoresPorIdController,crearJugadorController ,ObtenerJugadoresporEquipoController,actualizar_jugadorController} from "../controllers/jugador.controller";
 import upload from "../middlewares/multer";
 const router=Router();
 
@@ -23,4 +23,5 @@ router.get("/equipo/:id/jugadores",ObtenerJugadoresporEquipoController);
 router.post("/crear/jugador",upload.single("foto"), crearJugadorController);
 router.get("/obtener/jugador",obtener_JugadoresController);
 router.get("/obtener/jugador/:id",obtener_JugadoresPorIdController);
+router.put("/3actualizar/jugador/:id", actualizar_jugadorController)
 export default router;

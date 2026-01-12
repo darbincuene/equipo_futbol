@@ -14,6 +14,8 @@ const EliminarEquipo = async(id:string)=>{
     const equipo =await equipos_jugador.deleteOne({_id: id});
     return equipo;
 }
+
+
 const ActualizarEquipo = async(id:string,data:any)=>{
     const equipo = await equipos_jugador.updateOne(
         {_id:id},
@@ -21,6 +23,8 @@ const ActualizarEquipo = async(id:string,data:any)=>{
     );
     return equipo
 }
+
+
 const AgregarJugadorAlEquipo = async (id:string)=>{
     const equipo = await equipos_jugador.findById(id);
     if (!equipo){

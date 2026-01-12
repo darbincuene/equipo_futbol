@@ -7,24 +7,24 @@ import mongoose from "mongoose";
 
  export const CrearJugador = async (data: Jugador) => {
   try {
-    console.log("📥 Datos recibidos para crear jugador:", data);
+    // console.log(" Datos recibidos para crear jugador:", data);
 
     // Validar que el ID del equipo sea un ObjectId válido
     if (!mongoose.Types.ObjectId.isValid(data.equipo_id)) {
-      console.log(" ID del equipo inválido:", data.equipo_id);
+      // console.log(" ID equipo inválido:", data.equipo_id);
       throw new Error("El ID del equipo no es válido");
     }
 
     const equipoObjectId = new mongoose.Types.ObjectId(data.equipo_id);
 
-    // Buscar el equipo
+    // Busca el equipo
     const equipo = await modelo_equipo.findById(equipoObjectId);
     if (!equipo) {
       console.log("No se encontró el equipo con ID:", equipoObjectId);
       throw new Error("El equipo no existe");
     }
 
-    console.log("✅ Equipo encontrado:", equipo.nombre_equipo);
+    // console.log("Equipo encontrado:", equipo.nombre_equipo);
 
     const jugadorExistente = await modelo_jugador.findOne({
       nombre: data.nombre,
@@ -38,7 +38,7 @@ import mongoose from "mongoose";
 
     
     if (equipo.jugadores >= 22) {
-      console.log(" Límite de jugadores alcanzado (3).");
+      console.log(" Límite de jugadores alcanzado (26).");
       throw new Error("El equipo ya tiene el máximo de jugadores permitidos");
     }
 
@@ -73,9 +73,10 @@ export const ObtenerJugadorPorId = async(id:string)=>{
     return await modelo_jugador.findById(id).populate("equipo_id");
 }
 
-// funcion para traer los equipos asociados vale 
-// const traer_jugadores = async () => {
-//     const jugadores = await jugador_modelo.find().populate('equipo_id').lean();
-//     return jugadores;
-// };
-
+export const actualizarJugador = async(id:string,data:any )=>{
+  const jugador = await modelo_jugador.updateOne(
+    {_id:id},
+    {$set:data}
+  )
+  return jugador;
+}
