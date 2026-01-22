@@ -8,5 +8,9 @@ export interface Equipo{
     estadio:string;
     jugadores:number;
     historia:string;
-    logo:string;
+    logo?:{
+        
+        url:string;
+        public_id:string;
+    }
 }

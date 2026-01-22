@@ -59,10 +59,7 @@ import mongoose from "mongoose";
   }
 };
 export const ObtenerJugadoresporEquipo = async (equipoId: string) => {
-    const objectId = new mongoose.Types.ObjectId(equipoId);
-
-  const jugadores = await modelo_jugador.find({equipo_id:objectId}).populate("equipo_id","nombre_equipo");
-  return jugadores;
+    return await modelo_jugador.find({equipo_id:equipoId}).populate("equipo_id","nombre_equipo")
 }
 export const ObtenerJugadores= async ()=>{
     return await modelo_jugador.find().populate("equipo_id");
