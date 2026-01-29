@@ -1,6 +1,6 @@
 import express, { Request, Response, NextFunction } from "express";
-import Rutas from "./routes/Rutas_prueba";
 import { conectar_Db } from "./db/bd";
+import Rutas from"./routes/routes"
 import path from "path";
 
 const app = express();
