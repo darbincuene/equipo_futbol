@@ -46,15 +46,15 @@ import mongoose from "mongoose";
       ...data,
       equipo_id: equipoObjectId,
     });
-    console.log("✅ Jugador creado:", jugador.nombre);
+    console.log("Jugador creado:", jugador.nombre);
 
     equipo.jugadores += 1;
     await equipo.save();
-    console.log("📈 Total de jugadores ahora:", equipo.jugadores);
+    console.log("Total de jugadores ahora:", equipo.jugadores);
 
     return jugador;
   } catch (error: any) {
-    console.error("❌ Error al crear jugador:", error.message);
+    console.error(" Error al crear jugador:", error.message);
     throw error;
   }
 };

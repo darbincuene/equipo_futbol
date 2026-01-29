@@ -6,7 +6,7 @@ import { read } from "fs";
 
 export const crearJugadorController = async (req: Request, res: Response) => {
   try {
-    const foto = req.file? `/uploads/${req.file.filename}`: "";
+    const foto = req.file?.path || "";
     const jugador =await CrearJugador({
       ...req.body,
       foto

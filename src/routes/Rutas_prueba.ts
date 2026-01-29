@@ -22,7 +22,7 @@ router.get("/equipo/jugadores/:id",ObtenerJugadoresporEquipoController);
 
 
 // rutas jugador
-router.post("/crear/jugador",upload.single("foto"), crearJugadorController);
+router.post("/crear/jugador",configmulter.single("foto"), crearJugadorController);
 router.get("/obtener/jugador",obtener_JugadoresController);
 router.get("/obtener/jugador/:id",obtener_JugadoresPorIdController);
 router.put("/actualizar/jugador/:id", actualizar_jugadorController)
