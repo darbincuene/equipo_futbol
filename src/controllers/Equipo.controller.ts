@@ -6,6 +6,8 @@ import {
   AgregarJugadorAlEquipo,obtenerEquipoPorNombre
 } from "../services/equipo.service";
 
+
+
 export const Agregar_Jugador_Al_EquipoController = async (
   req: Request,
   res: Response
@@ -77,36 +79,6 @@ export const crearEquipoController = async (
   }
 };
 
-
-// export const crearEquipoController = async (req: Request, res: Response) => {
-//   try {
-//     const logo = req.file ? `/uploads/${req.file.filename}` : "";
-//     const { nombre_equipo, estadio, jugadores, historia, propietario, ciudad } =
-//       req.body;
-
-//     const Nuevo_Equipo = await Crear_equipo({
-//       nombre_equipo: nombre_equipo,
-//       ciudad: ciudad,
-//       propietario: propietario,
-//       estadio: estadio,
-//       jugadores: Number(jugadores),
-//       historia: historia,
-//       logo: logo,
-//       _id: undefined as any,
-//     });
-
-//     res.status(201).json({
-//       message: "Equipo creado correctamente",
-//       data: Nuevo_Equipo,
-//     });
-//   } catch (error) {
-//     console.error("Error al crear equipo", error);
-//     res.status(500).json({
-//       message: "Error al crear el equipo",
-//       error,
-//     });
-//   }
-// };
 export const Traer_EquiposController = async (req: Request, res: Response) => {
   try {
     const equipos = await Obtener_equipos();

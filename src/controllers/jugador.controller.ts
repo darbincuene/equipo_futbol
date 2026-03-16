@@ -25,7 +25,7 @@ export const crearJugadorController = async (req: Request, res: Response) => {
 export  const ObtenerJugadoresporEquipoController = async(req:Request,res:Response)=>{
   try{
     const {id}=req.params;
-    console.log("buscando jugadores del equipo con id",id);
+    // console.log("buscando jugadores del equipo con id",id);
     const jugadores = await ObtenerJugadoresporEquipo(id);
     if (jugadores.length === 0){
       return res.status(404).json({

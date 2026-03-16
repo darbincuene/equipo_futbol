@@ -3,6 +3,7 @@ import modelo_jugador from "../models/jugador_model";
 import modelo_equipo from "../models/equipos_model";
 import { Jugador } from "../interfaces/jugador";
 import mongoose from "mongoose";
+import { Types } from "mongoose";
 
 
  export const CrearJugador = async (data: Jugador) => {
@@ -58,9 +59,13 @@ import mongoose from "mongoose";
     throw error;
   }
 };
-export const ObtenerJugadoresporEquipo = async (equipoId: string) => {
-    return await modelo_jugador.find({equipo_id:equipoId}).populate("equipo_id","nombre_equipo")
+
+export const ObtenerJugadoresporEquipo =async(equipoId:string)=>{
+  return await modelo_jugador
+    .find({equipo_id :new Types.ObjectId(equipoId)})
+    .populate("equipo_id","nombre_equipo")
 }
+
 export const ObtenerJugadores= async ()=>{
     return await modelo_jugador.find().populate("equipo_id");
 
